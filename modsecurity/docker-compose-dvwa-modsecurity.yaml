@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+  dvwa:
+    image: ghcr.io/digininja/dvwa:latest
+    container_name: dvwa
+    environment:
+      - DB_SERVER=db
+    depends_on:
+      - db
+    networks:
+      - dvwa-net
+
+  db:
+    image: mariadb:10
+    container_name: dvwa-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=dvwa
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=p@ssw0rd
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - dvwa-net
+
+  nginx:
+    image: owasp/modsecurity-crs:nginx
+    container_name: dvwa-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./modsecurity.conf:/etc/modsecurity.d/modsecurity.conf
+      - ./crs-setup.conf:/etc/modsecurity.d/crs-setup.conf
+      - ./rules:/etc/modsecurity.d/rules
+    depends_on:
+      - dvwa
+    networks:
+      - dvwa-net
+
+networks:
+  dvwa-net:
+
+volumes:
+  db_data:
