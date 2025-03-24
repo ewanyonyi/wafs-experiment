@@ -56,9 +56,9 @@ services:
     container_name: bwapp-db
     environment:
       - MYSQL_ROOT_PASSWORD=bee
-      - MYSQL_DATABASE=bwapp
-      - MYSQL_USER=bee
-      - MYSQL_PASSWORD=bee
+      - MYSQL_DATABASE=bWAPP_BAK
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=loveZombies
     volumes:
       - bwapp-db:/var/lib/mysql
     networks:
