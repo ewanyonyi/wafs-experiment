@@ -1,0 +1,6 @@
+pandas 
+psutil
+matplotlib 
+seaborn 
+matplotlib 
+reportlab
