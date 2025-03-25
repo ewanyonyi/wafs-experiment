@@ -11,7 +11,7 @@ services:
       - bwapp_net
 
   nginx:
-    image: jasonrivers/nginx-modsecurity
+    image: owasp/modsecurity:nginx
     container_name: nginx_modsec
     restart: always
     ports:
