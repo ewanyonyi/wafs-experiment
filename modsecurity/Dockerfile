@@ -3,7 +3,7 @@ FROM nginx:alpine
 # Install build dependencies
 RUN apk update && \
     apk add --no-cache --virtual .build-deps \
-    gcc musl-dev linux-headers pcre-dev zlib-dev make git curl automake autoconf libtool
+    gcc musl-dev linux-headers pcre-dev zlib-dev make git curl automake autoconf libtool g++
 
 # Download and compile ModSecurity
 RUN git clone --depth 1 -b v3/master https://github.com/owasp-modsecurity/ModSecurity.git /usr/src/modsecurity && \
