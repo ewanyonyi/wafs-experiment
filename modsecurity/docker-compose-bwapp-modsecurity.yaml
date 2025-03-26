@@ -1,13 +1,18 @@
-version: "3.8"
+version: "3.9"
 
 services:
   nginx:
-    build: . # Build from the Dockerfile in the current directory.
+    image: owasp/modsecurity-crs:nginx
     ports:
       - "80:80"
-    restart: always
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./owasp-crs:/etc/nginx/owasp-crs
+      - ./bWAPP:/var/www/html/bWAPP
     depends_on:
       - bwapp
+    restart: always
+
   bwapp:
     image: raesene/bwapp:latest
     environment:
