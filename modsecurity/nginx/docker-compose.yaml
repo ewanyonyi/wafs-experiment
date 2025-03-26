@@ -25,7 +25,7 @@ services:
       - MYSQL_USER=alice
       - MYSQL_PASSWORD=loveZombies
     volumes:
-      - bwapp-db:/var/lib/mysql
+      - db_data:/var/lib/mysql
     networks:
       - webnet
     restart: unless-stopped
