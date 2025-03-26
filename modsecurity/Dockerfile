@@ -15,6 +15,9 @@ RUN git clone --depth 1 -b v3/master https://github.com/owasp-modsecurity/ModSec
     make -j$(nproc) && \
     make install
 
+# Verify module location
+RUN ls /usr/local/nginx/modules/
+
 # Configure Nginx with ModSecurity
 RUN echo "load_module /usr/local/nginx/modules/ngx_http_modsecurity_module.so;" >> /etc/nginx/nginx.conf
 
