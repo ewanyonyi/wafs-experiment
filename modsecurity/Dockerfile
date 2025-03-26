@@ -1,6 +1,7 @@
 FROM nginx:alpine
 
-RUN apk add --no-cache modsecurity-nginx
+RUN apk update && \
+    apk add --no-cache nginx-mod-http-modsecurity
 
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY modsecurity.conf /etc/nginx/modsecurity.conf
