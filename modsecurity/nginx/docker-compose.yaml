@@ -2,30 +2,33 @@ version: '3.8'
 
 services:
   web:
-    build: .
-    image: bwapp-php7:20240402
+    image: raesene/bwapp:latest
     container_name: bwapp
-    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_USER=bee
+      - MYSQL_PASSWORD=bee
     depends_on:
       - db
-    environment:
-      - MYSQL_HOST=db
-      - MYSQL_USER=root
     networks:
       - webnet
+    ports:
+      - "4280:80"
+    restart: unless-stopped
 
   db:
-    image: mysql:5.7
-    container_name: bwapp_db
-    restart: always
+    image: mariadb:10
+    container_name: bwapp-db
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - "3306:3306"
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_DATABASE=bWAPP_BAK
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=loveZombies
     volumes:
-      - db_data:/var/lib/mysql
+      - bwapp-db:/var/lib/mysql
     networks:
       - webnet
+    restart: unless-stopped
 
   nginx:
     build:
