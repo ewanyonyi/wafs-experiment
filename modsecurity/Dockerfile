@@ -6,10 +6,10 @@ RUN apk update && \
     gcc musl-dev linux-headers pcre-dev zlib-dev make git curl automake autoconf libtool
 
 # Download and compile ModSecurity
-RUN git clone --depth 1 -b v3/master https://github.com/SpiderLabs/ModSecurity.git /usr/src/modsecurity && \
+RUN git clone --depth 1 -b v3/master https://github.com/owasp-modsecurity/ModSecurity.git /usr/src/modsecurity && \
     cd /usr/src/modsecurity && \
     git submodule init && \
-    git submodule update --depth 1 && \
+    (git submodule update --depth 1 || true) && \
     ./build.sh && \
     ./configure --with-nginx-module && \
     make -j$(nproc) && \
