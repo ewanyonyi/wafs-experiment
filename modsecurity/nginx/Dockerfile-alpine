@@ -3,7 +3,6 @@ FROM image AS build
 ARG NGINX_VERSION="n/a"
 ARG MODSEC3_VERSION="n/a"
 ARG MODSEC3_FLAGS="n/a"
-ARG LMDB_VERSION="n/a"
 ARG LUA_VERSION="n/a"
 ARG NGINX_DYNAMIC_MODULES="n/a"
 ARG NGINX_HOME="n/a"
@@ -11,38 +10,37 @@ ARG READ_ONLY_FS="false"
 
 USER root
 
+# Note: pcre-dev (PCRE 1) is required by the build description,
+# even though the build will use PCRE2.
 RUN set -eux; \
-    echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections; \
-    apt-get update -qq; \
-    LD_LIBRARY_PATH="" apt-get install -y -qq --no-install-recommends --no-install-suggests \
+    apk add --no-cache --virtual .build-deps \
+        autoconf \
         automake \
-        cmake \
-        doxygen \
+        ca-certificates \
+        coreutils \
+        curl-dev \
         g++ \
+        gcc \
         git \
-        libcurl4-gnutls-dev \
-        libfuzzy-dev \
-        liblua${LUA_VERSION}-dev \
-        libpcre2-dev \
+        libc-dev \
+        libfuzzy2-dev \
+        libmaxminddb-dev \
+        libstdc++ \
         libtool \
         libxml2-dev \
-        libmaxminddb-dev \
-        libyajl-dev \
+        linux-headers \
+        lmdb-dev \
+        lua${LUA_VERSION}-dev \
         make \
+        openssl \
+        openssl-dev \
         patch \
-        pkg-config \
-        ruby \
-        zlib1g-dev; \
-     apt-get clean; \
-     rm -rf /var/lib/apt/lists/*
+        pkgconfig \
+        pcre2-dev \
+        yajl-dev \
+        zlib-dev
 
 WORKDIR /sources
-
-RUN set -eux; \
-    git clone https://github.com/LMDB/lmdb --branch LMDB_${LMDB_VERSION} --depth 1; \
-    make -C lmdb/libraries/liblmdb install; \
-    strip /usr/local/lib/liblmdb*.so*
-
 
 RUN set -eux; \
     git clone https://github.com/owasp-modsecurity/ModSecurity --branch "v${MODSEC3_VERSION}" --depth 1 --recursive; \
@@ -55,7 +53,7 @@ RUN set -eux; \
     make -j$(nproc) install; \
     strip /usr/local/modsecurity/lib/lib*.so*
 
-# Build modules
+   # Build modules
 RUN set -eux; \
     modules=""; \
     set -- ${NGINX_DYNAMIC_MODULES}; \
@@ -77,7 +75,7 @@ RUN set -eux; \
     cp objs/*.so /etc/nginx/modules/; \
     mkdir /etc/modsecurity.d; \
     curl -sSL https://raw.githubusercontent.com/owasp-modsecurity/ModSecurity/v3/master/unicode.mapping \
-         -o /etc/modsecurity.d/unicode.mapping
+        -o /etc/modsecurity.d/unicode.mapping
 
 # Generate/Download Diffie-Hellman parameter files
 RUN set -eux; \
@@ -93,21 +91,12 @@ USER root
 
 # hadolint ignore=DL3008,SC2016
 RUN set -eux; \
-    apt-get update; \
-    apt-get -y install --no-install-recommends \
-      ca-certificates \
-      curl \
-      gnupg; \
+    apk add --no-cache \
+    ca-certificates \
+    curl \
+    gnupg; \
     mkdir /opt/owasp-crs; \
     chown nginx:nginx /opt/owasp-crs
-
-RUN mkdir -p /var/log/nginx; && \
-    touch /var/log/nginx/bwapp-access.log && \
-    chmod 666 /var/log/nginx/bwapp-access.log && \
-    chown nginx:nginx /var/log/nginx/bwapp-access.log && \
-    touch /var/log/nginx/bwapp-error.log && \
-    chmod 666 /var/log/nginx/bwapp-error.log && \
-    chown nginx:nginx /var/log/nginx/bwapp-error.log
 
 USER nginx
 
@@ -124,7 +113,6 @@ RUN curl -sSL https://github.com/coreruleset/coreruleset/releases/download/v${CR
 FROM image
 
 ARG MODSEC3_VERSION
-ARG LMDB_VERSION
 ARG LUA_VERSION
 ARG LUA_MODULES
 ARG NGINX_HOME
@@ -221,7 +209,6 @@ ENV \
 
 COPY --from=build /usr/local/modsecurity/lib/libmodsecurity.so.${MODSEC3_VERSION} /usr/local/modsecurity/lib/
 COPY --from=build /etc/nginx/modules/*.so /etc/nginx/modules/
-COPY --from=build /usr/local/lib/liblmdb.so /usr/local/lib/
 COPY --from=build /usr/share/TLS/dhparam-* /etc/ssl/certs/
 COPY --from=build /etc/modsecurity.d/unicode.mapping /etc/modsecurity.d/unicode.mapping
 COPY --from=crs_release /opt/owasp-crs /opt/owasp-crs
@@ -239,23 +226,24 @@ COPY src/bin/* /usr/local/bin/
 USER root
 
 RUN set -eux; \
-    echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections; \
-    apt-get update -qq; \
-    LD_LIBRARY_PATH="" apt-get install -y -qq --no-install-recommends --no-install-suggests \
-        ca-certificates \
+    apk add --no-cache \
         curl \
+        curl-dev \
         ed \
-        libcurl4-gnutls-dev \
         libfuzzy2 \
-        liblua${LUA_VERSION} \
-        ${LUA_MODULES} \
-        libpcre2-8-0 \
-        libxml2 \
-        libyajl2 \
         libmaxminddb-dev \
-        moreutils; \
-    rm -rf /var/lib/apt/lists/*; \
-    apt-get clean; \
+        libstdc++ \
+        libxml2-dev \
+        lmdb-dev \
+        lua${LUA_VERSION} \
+        ${LUA_MODULES} \
+        moreutils \
+        openssl \
+        tzdata \
+        pcre2 \
+        # Alpine needs GNU 'sed' because the 'sed' program shipped with busybox does not support 'z' parameter for separating lines with a 'NUL' character.
+        sed \
+        yajl; \
     mkdir /etc/nginx/ssl; \
     # Comment out the SecDisableBackendCompression option since it is not supported in V3
     sed -i 's/^\(SecDisableBackendCompression .*\)/# \1/' /etc/nginx/templates/modsecurity.d/modsecurity-override.conf.template; \
@@ -287,5 +275,7 @@ USER nginx
 RUN mkdir -p /tmp/modsecurity/data; \
     mkdir -p /tmp/modsecurity/upload; \
     mkdir -p /tmp/modsecurity/tmp
+
+WORKDIR /usr/share/nginx/html
 
 HEALTHCHECK CMD /usr/local/bin/healthcheck

@@ -1,0 +1,27 @@
+# Nginx configuration for both HTTP and SSL
+
+server_tokens ${SERVER_TOKENS};
+
+map $http_upgrade $connection_upgrade {
+    default upgrade;
+    '' close;
+}
+
+server {
+    listen 80 default_server;
+
+    server_name snf-3351.vlab.ac.ke;
+
+    location / {
+        proxy_pass http://web:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    #access_log /var/log/nginx/bwapp-access.log;
+    #error_log  /var/log/nginx/bwapp-error.log;
+
+
+    include includes/location_common.conf;
+
+}
