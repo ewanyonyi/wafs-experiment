@@ -1,0 +1,98 @@
+[
+    {
+        "target": "No_WAF",
+        "attack_type": "XSS",
+        "endpoint": "/test.php",
+        "status_code": 200,
+        "response_length": 31,
+        "response_snippet": "q=<script>alert('XSS')</script>"
+    },
+    {
+        "target": "No_WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/admin/index.php",
+        "status_code": 200,
+        "response_length": 3160,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
+        "target": "No_WAF",
+        "attack_type": "LFI",
+        "endpoint": "/test.php",
+        "status_code": 200,
+        "response_length": 21,
+        "response_snippet": "file=../../etc/passwd"
+    },
+    {
+        "target": "No_WAF",
+        "attack_type": "Command Injection",
+        "endpoint": "/ping.php",
+        "status_code": 404,
+        "response_length": 290,
+        "response_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /ping.php was not found on this server.</p>\n<hr>\n<add"
+    },
+    {
+        "target": "OpenAppSec",
+        "attack_type": "XSS",
+        "endpoint": "/test.php",
+        "status_code": 403,
+        "response_length": 150,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n"
+    },
+    {
+        "target": "OpenAppSec",
+        "attack_type": "SQL Injection",
+        "endpoint": "/admin/index.php",
+        "status_code": 200,
+        "response_length": 3160,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
+        "target": "OpenAppSec",
+        "attack_type": "LFI",
+        "endpoint": "/test.php",
+        "status_code": 200,
+        "response_length": 21,
+        "response_snippet": "file=../../etc/passwd"
+    },
+    {
+        "target": "OpenAppSec",
+        "attack_type": "Command Injection",
+        "endpoint": "/ping.php",
+        "status_code": 404,
+        "response_length": 290,
+        "response_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /ping.php was not found on this server.</p>\n<hr>\n<add"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "XSS",
+        "endpoint": "/test.php",
+        "status_code": 403,
+        "response_length": 146,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "SQL Injection",
+        "endpoint": "/admin/index.php",
+        "status_code": 403,
+        "response_length": 146,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "LFI",
+        "endpoint": "/test.php",
+        "status_code": 403,
+        "response_length": 146,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "Command Injection",
+        "endpoint": "/ping.php",
+        "status_code": 403,
+        "response_length": 146,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    }
+]
