@@ -4,3 +4,4 @@ matplotlib
 seaborn 
 matplotlib 
 reportlab
+requests

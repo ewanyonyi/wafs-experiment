@@ -32,6 +32,22 @@
         "response_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /ping.php was not found on this server.</p>\n<hr>\n<add"
     },
     {
+        "target": "No_WAF",
+        "attack_type": "HTML Injection - Reflected (GET)",
+        "endpoint": "/htmli_get.php",
+        "status_code": 200,
+        "response_length": 4013,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
+        "target": "No_WAF",
+        "attack_type": "Remote & Local File Inclusion (RFI/LFI)",
+        "endpoint": "/rlfi.php",
+        "status_code": 200,
+        "response_length": 4013,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
         "target": "OpenAppSec",
         "attack_type": "XSS",
         "endpoint": "/test.php",
@@ -64,6 +80,22 @@
         "response_snippet": "<!DOCTYPE HTML PUBLIC \"-//IETF//DTD HTML 2.0//EN\">\n<html><head>\n<title>404 Not Found</title>\n</head><body>\n<h1>Not Found</h1>\n<p>The requested URL /ping.php was not found on this server.</p>\n<hr>\n<add"
     },
     {
+        "target": "OpenAppSec",
+        "attack_type": "HTML Injection - Reflected (GET)",
+        "endpoint": "/htmli_get.php",
+        "status_code": 200,
+        "response_length": 4013,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
+        "target": "OpenAppSec",
+        "attack_type": "Remote & Local File Inclusion (RFI/LFI)",
+        "endpoint": "/rlfi.php",
+        "status_code": 200,
+        "response_length": 4013,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
         "target": "ModSecurity",
         "attack_type": "XSS",
         "endpoint": "/test.php",
@@ -91,6 +123,22 @@
         "target": "ModSecurity",
         "attack_type": "Command Injection",
         "endpoint": "/ping.php",
+        "status_code": 403,
+        "response_length": 146,
+        "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "HTML Injection - Reflected (GET)",
+        "endpoint": "/htmli_get.php",
+        "status_code": 200,
+        "response_length": 4013,
+        "response_snippet": "<!DOCTYPE html>\n<html>\n\n<head>\n\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n\n<!--<link rel=\"stylesheet\" type=\"text/css\" href=\"https://fonts.googleapis.com/css?family=Architects"
+    },
+    {
+        "target": "ModSecurity",
+        "attack_type": "Remote & Local File Inclusion (RFI/LFI)",
+        "endpoint": "/rlfi.php",
         "status_code": 403,
         "response_length": 146,
         "response_snippet": "<html>\r\n<head><title>403 Forbidden</title></head>\r\n<body>\r\n<center><h1>403 Forbidden</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n"
