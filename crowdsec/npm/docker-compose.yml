@@ -1,0 +1,109 @@
+version: '3'
+
+services:
+  app:
+    image: 'lepresidente/nginxproxymanager:latest'
+    restart: unless-stopped
+    networks:
+      crowdsec:
+      npm:
+    ports:
+      - '80:80'  # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81'  # Admin Web Port
+    environment:
+      DB_MYSQL_HOST: "db"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+      DB_MYSQL_NAME: "npm"
+      CROWDSEC_OPENRESTY_BOUNCER: |
+        ENABLED=true
+        API_URL=http://crowdsec:8080
+        API_KEY=${CROWDSEC_BOUNCER_APIKEY}
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    depends_on:
+      db:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges=true
+
+  db:
+    image: 'mariadb:lts'
+    restart: unless-stopped
+    networks:
+      npm:
+    environment:
+      MYSQL_ROOT_PASSWORD: ${ROOT_DATABASE_PASSWORD}
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    security_opt:
+      - no-new-privileges=true
+    healthcheck:
+      test: ['CMD', '/usr/local/bin/healthcheck.sh', '--innodb_initialized']
+      start_period: 5s
+      timeout: 5s
+      interval: 5s
+      retries: 5
+
+  crowdsec:
+    image: docker.io/crowdsecurity/crowdsec:latest
+    container_name: crowdsec
+    environment:
+      - COLLECTIONS=crowdsecurity/nginx-proxy-manager
+    volumes:
+      - crowdsec-db:/var/lib/crowdsec/data/
+      - crowdsec-config:/etc/crowdsec/
+      - ./crowdsec/acquis.yaml:/etc/crowdsec/acquis.yaml
+      - ./data/logs/:/var/log/npm:ro
+    networks:
+      crowdsec:
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges=true
+
+  bwapp:
+    image: raesene/bwapp:latest
+    container_name: bwapp
+    environment:
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_USER=bee
+      - MYSQL_PASSWORD=bee
+    depends_on:
+      - bwapp-db
+    networks:
+      - npm
+    ports:
+      - "4280:80"
+    restart: unless-stopped
+
+  bwapp-db:
+    image: mariadb:10
+    container_name: bwapp-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_DATABASE=bWAPP
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=loveZombies
+    volumes:
+      - bwapp-db:/var/lib/mysql
+    networks:
+      - npm
+    restart: unless-stopped
+
+volumes:
+  crowdsec-db:
+  crowdsec-config:
+  mariadb-data:
+  bwapp-db:
+
+networks:
+  crowdsec:
+    driver: bridge
+  npm:
+    driver: bridge
