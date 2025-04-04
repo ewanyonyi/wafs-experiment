@@ -1,0 +1,236 @@
+[
+    {
+        "target": "No_WAF",
+        "request_type": "Search (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "q": "hello"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0897
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "File View (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "file": "info.txt"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0915
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "Ping (Safe)",
+        "endpoint": "/ping.php",
+        "method": "POST",
+        "request": {
+            "ip": "127.0.0.1"
+        },
+        "status_code": 404,
+        "response_time_seconds": 0.0996
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "HTML Form (Safe)",
+        "endpoint": "/htmli_get.php",
+        "method": "GET",
+        "request": {
+            "firstname": "John",
+            "lastname": "Doe",
+            "form": "submit"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.3001
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "Language Select (Safe)",
+        "endpoint": "/rlfi.php",
+        "method": "GET",
+        "request": {
+            "language": "english"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.1173
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "Book Search (Safe)",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "request": {
+            "title": "harry potter",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.1216
+    },
+    {
+        "target": "No_WAF",
+        "request_type": "Homepage Visit",
+        "endpoint": "/",
+        "method": "GET",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.149
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "Search (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "q": "hello"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.3513
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "File View (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "file": "info.txt"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.3486
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "Ping (Safe)",
+        "endpoint": "/ping.php",
+        "method": "POST",
+        "request": {
+            "ip": "127.0.0.1"
+        },
+        "status_code": 404,
+        "response_time_seconds": 0.4091
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "HTML Form (Safe)",
+        "endpoint": "/htmli_get.php",
+        "method": "GET",
+        "request": {
+            "firstname": "John",
+            "lastname": "Doe",
+            "form": "submit"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.4794
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "Language Select (Safe)",
+        "endpoint": "/rlfi.php",
+        "method": "GET",
+        "request": {
+            "language": "english"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.43
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "Book Search (Safe)",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "request": {
+            "title": "harry potter",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.4599
+    },
+    {
+        "target": "CrowdSec",
+        "request_type": "Homepage Visit",
+        "endpoint": "/",
+        "method": "GET",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.73
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "Search (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "q": "hello"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.3127
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "File View (Safe)",
+        "endpoint": "/test.php",
+        "method": "GET",
+        "request": {
+            "file": "info.txt"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0981
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "Ping (Safe)",
+        "endpoint": "/ping.php",
+        "method": "POST",
+        "request": {
+            "ip": "127.0.0.1"
+        },
+        "status_code": 404,
+        "response_time_seconds": 0.0838
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "HTML Form (Safe)",
+        "endpoint": "/htmli_get.php",
+        "method": "GET",
+        "request": {
+            "firstname": "John",
+            "lastname": "Doe",
+            "form": "submit"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.1385
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "Language Select (Safe)",
+        "endpoint": "/rlfi.php",
+        "method": "GET",
+        "request": {
+            "language": "english"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.1386
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "Book Search (Safe)",
+        "endpoint": "/sqli_1.php",
+        "method": "GET",
+        "request": {
+            "title": "harry potter",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.2102
+    },
+    {
+        "target": "ModSecurity",
+        "request_type": "Homepage Visit",
+        "endpoint": "/",
+        "method": "GET",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.1657
+    }
+]
