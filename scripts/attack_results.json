@@ -1,36 +1,36 @@
 [
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "XSS",
         "endpoint": "/test.php",
         "request": {
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 200,
-        "response_time_seconds": 0.0898
+        "response_time_seconds": 0.0097
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "LFI",
         "endpoint": "/test.php",
         "request": {
             "file": "../../etc/passwd"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2581
+        "response_time_seconds": 0.0068
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "Command Injection",
         "endpoint": "/ping.php",
         "request": {
             "ip": "127.0.0.1; ls -la"
         },
         "status_code": 404,
-        "response_time_seconds": 0.1164
+        "response_time_seconds": 0.0058
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "HTML Injection - Reflected (GET)",
         "endpoint": "/htmli_get.php",
         "request": {
@@ -39,219 +39,219 @@
             "form": "submit"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1357
+        "response_time_seconds": 0.011
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "Remote & Local File Inclusion (RFI/LFI)",
         "endpoint": "/rlfi.php",
         "request": {
             "language": "/etc/passwd"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1378
+        "response_time_seconds": 0.0124
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
             "title": "blah%27+or+1=1--%20",
             "action": "search"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.1025
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019order by 1- - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1165
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019order by 8- - - (out of clausle)",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.13
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4,5,6,7, - - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.5099
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, database (), 6,7, - - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1508
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, version (), 6,7, - - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.518
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, table_name, 6,7 from information_schema.tables- - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1097
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, table_name, 6,7 from information_schema.tables where table_schema = database () - - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1301
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, group_concat (table_name), 6,7 from information_schema.tables where table_schema = database () - - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1604
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, group_concat (colume_name), 6,7 from information_schema.tables where table_schema =\u2019 users\u2019- - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.486
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "SQL Injection",
-        "endpoint": "/sqli_1.php",
-        "request": {
-            "title": "1 \u2019union select 1,2,3,4, group_concat (login, password), 6,7, from users- - -",
-            "action": "search"
-        },
-        "status_code": 200,
-        "response_time_seconds": 0.1101
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "Sensitive File Access",
-        "endpoint": "/phpinfo.php",
-        "request": null,
-        "status_code": 200,
-        "response_time_seconds": 0.1243
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "Sensitive File Access",
-        "endpoint": "/config.inc",
-        "request": null,
-        "status_code": 200,
-        "response_time_seconds": 0.3349
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "Sensitive Directory Listing",
-        "endpoint": "/passwords/",
-        "request": null,
-        "status_code": 200,
-        "response_time_seconds": 0.1185
-    },
-    {
-        "target": "No_WAF",
-        "attack_type": "Sensitive Directory Listing",
-        "endpoint": "/db/",
-        "request": null,
         "status_code": 200,
         "response_time_seconds": 0.0869
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019order by 1- - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0106
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019order by 8- - - (out of clausle)",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0141
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4,5,6,7, - - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0219
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, database (), 6,7, - - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0166
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, version (), 6,7, - - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0114
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, table_name, 6,7 from information_schema.tables- - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.012
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, table_name, 6,7 from information_schema.tables where table_schema = database () - - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0117
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, group_concat (table_name), 6,7 from information_schema.tables where table_schema = database () - - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.013
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, group_concat (colume_name), 6,7 from information_schema.tables where table_schema =\u2019 users\u2019- - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.0144
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "SQL Injection",
+        "endpoint": "/sqli_1.php",
+        "request": {
+            "title": "1 \u2019union select 1,2,3,4, group_concat (login, password), 6,7, from users- - -",
+            "action": "search"
+        },
+        "status_code": 200,
+        "response_time_seconds": 0.017
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "Sensitive File Access",
+        "endpoint": "/phpinfo.php",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.0147
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "Sensitive File Access",
+        "endpoint": "/config.inc",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.0084
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "Sensitive Directory Listing",
+        "endpoint": "/passwords/",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.0104
+    },
+    {
+        "target": "No WAF",
+        "attack_type": "Sensitive Directory Listing",
+        "endpoint": "/db/",
+        "request": null,
+        "status_code": 200,
+        "response_time_seconds": 0.0065
+    },
+    {
+        "target": "No WAF",
         "attack_type": "Sensitive Directory Listing",
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1771
+        "response_time_seconds": 0.0602
     },
     {
-        "target": "No_WAF",
+        "target": "No WAF",
         "attack_type": "Cookie Security Check",
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.3664
+        "response_time_seconds": 0.0219
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "XSS",
         "endpoint": "/test.php",
         "request": {
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0863
+        "response_time_seconds": 0.0324
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "LFI",
         "endpoint": "/test.php",
         "request": {
             "file": "../../etc/passwd"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.7456
+        "status_code": 403,
+        "response_time_seconds": 0.0353
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Command Injection",
         "endpoint": "/ping.php",
         "request": {
             "ip": "127.0.0.1; ls -la"
         },
-        "status_code": 404,
-        "response_time_seconds": 0.3681
+        "status_code": 403,
+        "response_time_seconds": 0.0353
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "HTML Injection - Reflected (GET)",
         "endpoint": "/htmli_get.php",
         "request": {
@@ -260,31 +260,31 @@
             "form": "submit"
         },
         "status_code": 200,
-        "response_time_seconds": 0.462
+        "response_time_seconds": 0.0402
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Remote & Local File Inclusion (RFI/LFI)",
         "endpoint": "/rlfi.php",
         "request": {
             "language": "/etc/passwd"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.4078
+        "status_code": 403,
+        "response_time_seconds": 0.0332
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
             "title": "blah%27+or+1=1--%20",
             "action": "search"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.5828
+        "status_code": 403,
+        "response_time_seconds": 0.0247
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -292,10 +292,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.8563
+        "response_time_seconds": 0.0545
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -303,10 +303,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.3303
+        "response_time_seconds": 0.0323
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -314,10 +314,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.3981
+        "response_time_seconds": 0.03
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -325,10 +325,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.6012
+        "response_time_seconds": 0.0299
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -336,10 +336,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.6048
+        "response_time_seconds": 0.0798
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -347,32 +347,32 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.363
+        "response_time_seconds": 0.0275
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
             "title": "1 \u2019union select 1,2,3,4, table_name, 6,7 from information_schema.tables where table_schema = database () - - -",
             "action": "search"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.5484
+        "status_code": 403,
+        "response_time_seconds": 0.0414
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
             "title": "1 \u2019union select 1,2,3,4, group_concat (table_name), 6,7 from information_schema.tables where table_schema = database () - - -",
             "action": "search"
         },
-        "status_code": 200,
-        "response_time_seconds": 0.6357
+        "status_code": 403,
+        "response_time_seconds": 0.0324
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -380,10 +380,10 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.5827
+        "response_time_seconds": 0.0415
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "SQL Injection",
         "endpoint": "/sqli_1.php",
         "request": {
@@ -391,55 +391,55 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.5808
+        "response_time_seconds": 0.0422
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Sensitive File Access",
         "endpoint": "/phpinfo.php",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.5291
+        "response_time_seconds": 0.0636
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Sensitive File Access",
         "endpoint": "/config.inc",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.4914
+        "response_time_seconds": 0.0309
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Sensitive Directory Listing",
         "endpoint": "/passwords/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.7264
+        "response_time_seconds": 0.029
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Sensitive Directory Listing",
         "endpoint": "/db/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.8807
+        "response_time_seconds": 0.0309
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Sensitive Directory Listing",
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.5989
+        "response_time_seconds": 0.0329
     },
     {
-        "target": "CrowdSec",
+        "target": "SafeLine",
         "attack_type": "Cookie Security Check",
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 2.2226
+        "response_time_seconds": 0.0607
     },
     {
         "target": "ModSecurity",
@@ -449,7 +449,7 @@
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1175
+        "response_time_seconds": 0.0192
     },
     {
         "target": "ModSecurity",
@@ -459,7 +459,7 @@
             "file": "../../etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1148
+        "response_time_seconds": 0.0125
     },
     {
         "target": "ModSecurity",
@@ -469,7 +469,7 @@
             "ip": "127.0.0.1; ls -la"
         },
         "status_code": 403,
-        "response_time_seconds": 0.2515
+        "response_time_seconds": 0.018
     },
     {
         "target": "ModSecurity",
@@ -481,7 +481,7 @@
             "form": "submit"
         },
         "status_code": 200,
-        "response_time_seconds": 1.1336
+        "response_time_seconds": 0.0241
     },
     {
         "target": "ModSecurity",
@@ -491,7 +491,7 @@
             "language": "/etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.6525
+        "response_time_seconds": 0.0128
     },
     {
         "target": "ModSecurity",
@@ -502,7 +502,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0949
+        "response_time_seconds": 0.0126
     },
     {
         "target": "ModSecurity",
@@ -513,7 +513,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.5524
+        "response_time_seconds": 0.0237
     },
     {
         "target": "ModSecurity",
@@ -524,7 +524,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1057
+        "response_time_seconds": 0.0105
     },
     {
         "target": "ModSecurity",
@@ -535,7 +535,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0897
+        "response_time_seconds": 0.0114
     },
     {
         "target": "ModSecurity",
@@ -546,7 +546,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0901
+        "response_time_seconds": 0.014
     },
     {
         "target": "ModSecurity",
@@ -557,7 +557,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0918
+        "response_time_seconds": 0.0107
     },
     {
         "target": "ModSecurity",
@@ -568,7 +568,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.2178
+        "response_time_seconds": 0.0128
     },
     {
         "target": "ModSecurity",
@@ -579,7 +579,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.2299
+        "response_time_seconds": 0.017
     },
     {
         "target": "ModSecurity",
@@ -590,7 +590,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.101
+        "response_time_seconds": 0.0155
     },
     {
         "target": "ModSecurity",
@@ -601,7 +601,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0914
+        "response_time_seconds": 0.0137
     },
     {
         "target": "ModSecurity",
@@ -612,7 +612,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1127
+        "response_time_seconds": 0.0125
     },
     {
         "target": "ModSecurity",
@@ -620,7 +620,7 @@
         "endpoint": "/phpinfo.php",
         "request": null,
         "status_code": 403,
-        "response_time_seconds": 0.2681
+        "response_time_seconds": 0.0125
     },
     {
         "target": "ModSecurity",
@@ -628,7 +628,7 @@
         "endpoint": "/config.inc",
         "request": null,
         "status_code": 403,
-        "response_time_seconds": 0.3983
+        "response_time_seconds": 0.0107
     },
     {
         "target": "ModSecurity",
@@ -636,7 +636,7 @@
         "endpoint": "/passwords/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.3132
+        "response_time_seconds": 0.0112
     },
     {
         "target": "ModSecurity",
@@ -644,7 +644,7 @@
         "endpoint": "/db/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0844
+        "response_time_seconds": 0.0112
     },
     {
         "target": "ModSecurity",
@@ -652,7 +652,7 @@
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 5.0833
+        "response_time_seconds": 0.0432
     },
     {
         "target": "ModSecurity",
@@ -660,6 +660,6 @@
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.7582
+        "response_time_seconds": 0.0353
     }
 ]

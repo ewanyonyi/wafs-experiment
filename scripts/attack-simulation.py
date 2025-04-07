@@ -8,7 +8,7 @@ import requests
 TARGETS = {
     "No WAF": "http://snf-6360.vlab.ac.ke",
     # "CrowdSec": "http://snf-3406.vlab.ac.ke",
-    "SafeLine": "http://snf-3406.vlab.ac.ke",
+    "SafeLine": "https://snf-3406.vlab.ac.ke",
     "ModSecurity": "http://snf-3351.vlab.ac.ke"
 }
 
@@ -185,7 +185,6 @@ def attack_target(target_name, base_url):
                 "request": request_data,
                 "status_code": response.status_code,
                 "response_time_seconds": round(elapsed_time, 4),
-                # "response_snippet": response.text[:200]  # Capture first 200 chars
             }
 
             results.append(result)

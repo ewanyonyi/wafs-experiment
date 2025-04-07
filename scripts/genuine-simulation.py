@@ -4,8 +4,8 @@ import requests
 
 # Target instances (same as attack script)
 TARGETS = {
-    "No_WAF": "http://snf-6360.vlab.ac.ke",
-    "CrowdSec": "http://snf-3406.vlab.ac.ke",
+    "No WAF": "http://snf-6360.vlab.ac.ke",
+    "SafeLine": "https://snf-3406.vlab.ac.ke",
     "ModSecurity": "http://snf-3351.vlab.ac.ke"
 }
 
@@ -45,7 +45,7 @@ BENIGN_REQUESTS = [
         "type": "Book Search (Safe)",
         "endpoint": "/sqli_1.php",
         "method": "GET",
-        "params": {"title": "harry potter", "action": "search"}
+        "params": {"title": "The Amazing Spider-Man", "action": "search"}
     },
     {
         "type": "Homepage Visit",
