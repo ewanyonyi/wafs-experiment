@@ -6,8 +6,9 @@ import requests
 
 # Target instances
 TARGETS = {
-    "No_WAF": "http://snf-6360.vlab.ac.ke",
-    "CrowdSec": "http://snf-3406.vlab.ac.ke",
+    "No WAF": "http://snf-6360.vlab.ac.ke",
+    # "CrowdSec": "http://snf-3406.vlab.ac.ke",
+    "SafeLine": "http://snf-3406.vlab.ac.ke",
     "ModSecurity": "http://snf-3351.vlab.ac.ke"
 }
 

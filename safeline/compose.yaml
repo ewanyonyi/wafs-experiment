@@ -141,3 +141,38 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.10
+
+  bwapp:
+    image: raesene/bwapp:latest
+    container_name: bwapp
+    environment:
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_USER=bee
+      - MYSQL_PASSWORD=bee
+    depends_on:
+      - bwapp-db
+
+    networks:
+      safeline-ce:
+        ipv4_address: ${SUBNET_PREFIX}.20
+
+    ports:
+      - "4280:80"
+    restart: unless-stopped
+
+  bwapp-db:
+    image: mariadb:10
+    container_name: bwapp-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=bee
+      - MYSQL_DATABASE=bWAPP
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=loveZombies
+    volumes:
+      - bwapp-db:/var/lib/mysql
+    networks:
+      safeline-ce:
+        ipv4_address: ${SUBNET_PREFIX}.21
+    restart: unless-stopped
+
+
