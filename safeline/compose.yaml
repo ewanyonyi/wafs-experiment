@@ -1,3 +1,5 @@
+version: "3.8"
+
 networks:
   safeline-ce:
     name: safeline-ce
@@ -24,9 +26,10 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.2
-    command: [postgres, -c, max_connections=600]
+    command: ["postgres", "-c", "max_connections=600"]
     healthcheck:
-      test: pg_isready -U safeline-ce -d safeline-ce
+      test: ["CMD", "pg_isready", "-U", "safeline-ce", "-d", "safeline-ce"]
+
   mgt:
     container_name: safeline-mgt
     restart: always
@@ -40,7 +43,7 @@ services:
     ports:
       - ${MGT_PORT:-81}:1443
     healthcheck:
-      test: curl -k -f https://localhost:1443/api/open/health
+      test: ["CMD", "curl", "-k", "-f", "https://localhost:1443/api/open/health"]
     environment:
       - MGT_PG=postgres://safeline-ce:postgres1234password@safeline-pg/safeline-ce?sslmode=disable
     depends_on:
@@ -54,6 +57,7 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.4
+
   detect:
     container_name: safeline-detector
     restart: always
@@ -67,6 +71,7 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.5
+
   tengine:
     container_name: safeline-tengine
     restart: always
@@ -83,12 +88,12 @@ services:
     environment:
       - TCD_MGT_API=https://${SUBNET_PREFIX}.4:1443/api/open/publish/server
       - TCD_SNSERVER=${SUBNET_PREFIX}.5:8000
-      # deprecated
       - SNSERVER_ADDR=${SUBNET_PREFIX}.5:8000
       - CHAOS_ADDR=${SUBNET_PREFIX}.10
     ulimits:
       nofile: 131072
     network_mode: host
+
   luigi:
     container_name: safeline-luigi
     restart: always
@@ -110,6 +115,7 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.7
+
   fvm:
     container_name: safeline-fvm
     restart: always
@@ -124,6 +130,7 @@ services:
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.8
+
   chaos:
     container_name: safeline-chaos
     restart: always
@@ -147,15 +154,13 @@ services:
     container_name: bwapp
     environment:
       - MYSQL_ROOT_PASSWORD=bee
-      - MYSQL_USER=bee
-      - MYSQL_PASSWORD=bee
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=loveZombies
     depends_on:
       - bwapp-db
-
     networks:
       safeline-ce:
         ipv4_address: ${SUBNET_PREFIX}.20
-
     ports:
       - "4280:80"
     restart: unless-stopped
@@ -177,5 +182,3 @@ services:
 
 volumes:
   bwapp-db:
-
-
