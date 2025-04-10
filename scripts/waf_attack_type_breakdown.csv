@@ -1,0 +1,10 @@
+Attack Type,No WAF Detection %,SafeLine Detection %,ModSecurity Detection %
+XSS,0.0,100.0,100.0
+LFI,0.0,100.0,100.0
+Command Injection,0.0,0.0,100.0
+HTML Injection - Reflected (GET),0.0,0.0,0.0
+Remote & Local File Inclusion (RFI/LFI),0.0,100.0,100.0
+SQL Injection,0.0,27.27,90.91
+Sensitive File Access,0.0,0.0,100.0
+Sensitive Directory Listing,0.0,0.0,0.0
+Cookie Security Check,0.0,0.0,0.0

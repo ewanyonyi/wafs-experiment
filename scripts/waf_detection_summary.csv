@@ -1,0 +1,4 @@
+WAF,Total Attacks,Blocked,Missed,Detection Rate (TPR) %,False Negative Rate (FNR) %,Avg Response Time (ms)
+ModSecurity,22,16,6,72.73,27.27,89.61
+SafeLine,22,6,16,27.27,72.73,237.37
+No WAF,22,0,22,0.0,100.0,169.47

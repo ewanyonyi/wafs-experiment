@@ -215,4 +215,3 @@ with open("attack_results.json", "w") as file:
     json.dump(all_results, file, indent=4)
 
 print("\n📊 Attack simulation completed! Results saved to attack_results.json.")
-

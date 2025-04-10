@@ -7,7 +7,7 @@
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 200,
-        "response_time_seconds": 0.0921
+        "response_time_seconds": 0.0952
     },
     {
         "target": "No WAF",
@@ -17,7 +17,7 @@
             "file": "../../etc/passwd"
         },
         "status_code": 200,
-        "response_time_seconds": 0.0704
+        "response_time_seconds": 0.0902
     },
     {
         "target": "No WAF",
@@ -27,7 +27,7 @@
             "ip": "127.0.0.1; ls -la"
         },
         "status_code": 404,
-        "response_time_seconds": 1.0808
+        "response_time_seconds": 0.2012
     },
     {
         "target": "No WAF",
@@ -49,7 +49,7 @@
             "language": "/etc/passwd"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1082
+        "response_time_seconds": 0.1493
     },
     {
         "target": "No WAF",
@@ -60,7 +60,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1186
+        "response_time_seconds": 0.1599
     },
     {
         "target": "No WAF",
@@ -71,7 +71,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1104
+        "response_time_seconds": 0.1314
     },
     {
         "target": "No WAF",
@@ -82,7 +82,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1185
+        "response_time_seconds": 0.1084
     },
     {
         "target": "No WAF",
@@ -93,7 +93,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1013
+        "response_time_seconds": 0.1296
     },
     {
         "target": "No WAF",
@@ -104,7 +104,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.108
+        "response_time_seconds": 0.0995
     },
     {
         "target": "No WAF",
@@ -115,7 +115,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1092
+        "response_time_seconds": 0.1914
     },
     {
         "target": "No WAF",
@@ -126,7 +126,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1487
+        "response_time_seconds": 0.1078
     },
     {
         "target": "No WAF",
@@ -137,7 +137,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.0994
+        "response_time_seconds": 0.1191
     },
     {
         "target": "No WAF",
@@ -148,7 +148,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.09
+        "response_time_seconds": 0.1492
     },
     {
         "target": "No WAF",
@@ -159,7 +159,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.5693
+        "response_time_seconds": 0.1122
     },
     {
         "target": "No WAF",
@@ -170,7 +170,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1099
+        "response_time_seconds": 0.128
     },
     {
         "target": "No WAF",
@@ -178,7 +178,7 @@
         "endpoint": "/phpinfo.php",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1574
+        "response_time_seconds": 0.2137
     },
     {
         "target": "No WAF",
@@ -186,7 +186,7 @@
         "endpoint": "/config.inc",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0582
+        "response_time_seconds": 0.1121
     },
     {
         "target": "No WAF",
@@ -194,7 +194,7 @@
         "endpoint": "/passwords/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0588
+        "response_time_seconds": 0.0698
     },
     {
         "target": "No WAF",
@@ -202,7 +202,7 @@
         "endpoint": "/db/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0646
+        "response_time_seconds": 0.1889
     },
     {
         "target": "No WAF",
@@ -210,7 +210,7 @@
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0858
+        "response_time_seconds": 0.079
     },
     {
         "target": "No WAF",
@@ -218,7 +218,7 @@
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1616
+        "response_time_seconds": 0.132
     },
     {
         "target": "SafeLine",
@@ -228,7 +228,7 @@
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1844
+        "response_time_seconds": 0.2156
     },
     {
         "target": "SafeLine",
@@ -238,7 +238,7 @@
             "file": "../../etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.3572
+        "response_time_seconds": 0.2139
     },
     {
         "target": "SafeLine",
@@ -248,7 +248,7 @@
             "ip": "127.0.0.1; ls -la"
         },
         "status_code": 404,
-        "response_time_seconds": 0.3533
+        "response_time_seconds": 0.28
     },
     {
         "target": "SafeLine",
@@ -260,7 +260,7 @@
             "form": "submit"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2038
+        "response_time_seconds": 0.3964
     },
     {
         "target": "SafeLine",
@@ -270,7 +270,7 @@
             "language": "/etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.2737
+        "response_time_seconds": 0.2519
     },
     {
         "target": "SafeLine",
@@ -281,7 +281,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1908
+        "response_time_seconds": 0.2655
     },
     {
         "target": "SafeLine",
@@ -292,7 +292,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2446
+        "response_time_seconds": 0.3063
     },
     {
         "target": "SafeLine",
@@ -303,7 +303,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2218
+        "response_time_seconds": 0.2288
     },
     {
         "target": "SafeLine",
@@ -314,7 +314,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2078
+        "response_time_seconds": 0.2305
     },
     {
         "target": "SafeLine",
@@ -325,7 +325,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2191
+        "response_time_seconds": 0.2293
     },
     {
         "target": "SafeLine",
@@ -336,7 +336,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.3301
+        "response_time_seconds": 0.2117
     },
     {
         "target": "SafeLine",
@@ -347,7 +347,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2596
+        "response_time_seconds": 0.227
     },
     {
         "target": "SafeLine",
@@ -358,7 +358,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1964
+        "response_time_seconds": 0.2152
     },
     {
         "target": "SafeLine",
@@ -369,7 +369,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.2004
+        "response_time_seconds": 0.3467
     },
     {
         "target": "SafeLine",
@@ -380,7 +380,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2315
+        "response_time_seconds": 0.2272
     },
     {
         "target": "SafeLine",
@@ -391,7 +391,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.2102
+        "response_time_seconds": 0.2496
     },
     {
         "target": "SafeLine",
@@ -399,7 +399,7 @@
         "endpoint": "/phpinfo.php",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.2452
+        "response_time_seconds": 0.2717
     },
     {
         "target": "SafeLine",
@@ -407,7 +407,7 @@
         "endpoint": "/config.inc",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1794
+        "response_time_seconds": 0.2479
     },
     {
         "target": "SafeLine",
@@ -415,7 +415,7 @@
         "endpoint": "/passwords/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1738
+        "response_time_seconds": 0.2192
     },
     {
         "target": "SafeLine",
@@ -423,7 +423,7 @@
         "endpoint": "/db/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1823
+        "response_time_seconds": 0.2171
     },
     {
         "target": "SafeLine",
@@ -431,7 +431,7 @@
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.2784
+        "response_time_seconds": 0.2386
     },
     {
         "target": "SafeLine",
@@ -439,7 +439,7 @@
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.2784
+        "response_time_seconds": 0.28
     },
     {
         "target": "ModSecurity",
@@ -449,7 +449,7 @@
             "q": "<script>alert('XSS')</script>"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0877
+        "response_time_seconds": 0.2095
     },
     {
         "target": "ModSecurity",
@@ -459,7 +459,7 @@
             "file": "../../etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0697
+        "response_time_seconds": 0.0786
     },
     {
         "target": "ModSecurity",
@@ -469,7 +469,7 @@
             "ip": "127.0.0.1; ls -la"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0706
+        "response_time_seconds": 0.088
     },
     {
         "target": "ModSecurity",
@@ -481,7 +481,7 @@
             "form": "submit"
         },
         "status_code": 200,
-        "response_time_seconds": 0.1399
+        "response_time_seconds": 0.1307
     },
     {
         "target": "ModSecurity",
@@ -491,7 +491,7 @@
             "language": "/etc/passwd"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0705
+        "response_time_seconds": 0.2006
     },
     {
         "target": "ModSecurity",
@@ -502,7 +502,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0975
+        "response_time_seconds": 0.0789
     },
     {
         "target": "ModSecurity",
@@ -513,7 +513,7 @@
             "action": "search"
         },
         "status_code": 200,
-        "response_time_seconds": 0.0993
+        "response_time_seconds": 0.3792
     },
     {
         "target": "ModSecurity",
@@ -524,7 +524,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0797
+        "response_time_seconds": 0.1631
     },
     {
         "target": "ModSecurity",
@@ -535,7 +535,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.1203
+        "response_time_seconds": 0.0777
     },
     {
         "target": "ModSecurity",
@@ -557,7 +557,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0993
+        "response_time_seconds": 0.0898
     },
     {
         "target": "ModSecurity",
@@ -568,7 +568,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.07
+        "response_time_seconds": 0.0916
     },
     {
         "target": "ModSecurity",
@@ -579,7 +579,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0895
+        "response_time_seconds": 0.1884
     },
     {
         "target": "ModSecurity",
@@ -590,7 +590,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0798
+        "response_time_seconds": 0.0889
     },
     {
         "target": "ModSecurity",
@@ -601,7 +601,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0789
+        "response_time_seconds": 0.0796
     },
     {
         "target": "ModSecurity",
@@ -612,7 +612,7 @@
             "action": "search"
         },
         "status_code": 403,
-        "response_time_seconds": 0.0601
+        "response_time_seconds": 0.0912
     },
     {
         "target": "ModSecurity",
@@ -620,7 +620,7 @@
         "endpoint": "/phpinfo.php",
         "request": null,
         "status_code": 403,
-        "response_time_seconds": 0.1093
+        "response_time_seconds": 0.0788
     },
     {
         "target": "ModSecurity",
@@ -628,7 +628,7 @@
         "endpoint": "/config.inc",
         "request": null,
         "status_code": 403,
-        "response_time_seconds": 0.0696
+        "response_time_seconds": 0.218
     },
     {
         "target": "ModSecurity",
@@ -636,7 +636,7 @@
         "endpoint": "/passwords/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0764
+        "response_time_seconds": 0.0731
     },
     {
         "target": "ModSecurity",
@@ -644,7 +644,7 @@
         "endpoint": "/db/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.1158
+        "response_time_seconds": 0.0918
     },
     {
         "target": "ModSecurity",
@@ -652,7 +652,7 @@
         "endpoint": "/documents/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.0724
+        "response_time_seconds": 0.131
     },
     {
         "target": "ModSecurity",
@@ -660,6 +660,6 @@
         "endpoint": "/",
         "request": null,
         "status_code": 200,
-        "response_time_seconds": 0.136
+        "response_time_seconds": 0.194
     }
 ]

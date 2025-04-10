@@ -5,7 +5,7 @@ import requests
 # Target instances (same as attack script)
 TARGETS = {
     "No WAF": "http://snf-6360.vlab.ac.ke",
-    "SafeLine": "https://snf-3406.vlab.ac.ke",
+    "SafeLine": "http://snf-3406.vlab.ac.ke",
     "ModSecurity": "http://snf-3351.vlab.ac.ke"
 }
 
